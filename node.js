@@ -5,17 +5,13 @@ app.set('view engine', 'ejs');
 
 const db = require('./models')
 
-// db.Admin.()
+// db.Admin.findAll()
 //     .then((admins) => {
 //         admins.forEach((admin) =>{
-//             console.log(admin.name)
+//             console.log(admin.name, admin.id, admin.email, admin.phone)
 //         })
 //     });
 
-db.Admin.findByPk(1)
-    .then((admins) =>{
-        console.log(admins)
-    })
 
 app.get('/', (req, res)=>{
     
@@ -24,7 +20,7 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/admin', (req, res)=>{
-    res.render('admin', {});
+    res.render('admin', {db:db});
 });
 
 
