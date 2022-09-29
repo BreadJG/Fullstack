@@ -1,12 +1,14 @@
 const express = require('express');
+const Sequelize = require('sequelize');
+const { Admin } = require('../models/admin');
 const router = express.Router();
-const db = require('./models')
+const db = require('../models')
 
 
-router.get('/admin', function(req, res, next) {
+router.get('/', function(req, res, next) {
     db.Admin.findAll()
     .then((admins) => {
-       res.render('admin', {adminData:data})
+       res.render('../views/admin', {adminData:admins})
     });
 });
 

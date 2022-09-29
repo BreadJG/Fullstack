@@ -5,6 +5,10 @@ app.set('view engine', 'ejs');
 
 const db = require('./models')
 
+const adminRouter = require('./routes/admin')
+
+app.use('/admin', adminRouter)
+
 // db.Admin.findAll()
 //     .then((admins) => {
 //         admins.forEach((admin) =>{
@@ -14,9 +18,7 @@ const db = require('./models')
 
 
 app.get('/', (req, res)=>{
-    
     res.render('home');
-    
 });
 
 app.get('/admin', (req, res)=>{
@@ -25,15 +27,12 @@ app.get('/admin', (req, res)=>{
 
 
 app.get('/customers', (req, res)=>{
-    
     res.render('customers', {db:db});
 });
     
 
 var server = app.listen(4000, function() {
-    
     console.log('Server running at http://localhost:4000/')
-    
 });
 
 

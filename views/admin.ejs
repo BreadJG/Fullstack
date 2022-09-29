@@ -47,16 +47,23 @@
                 </tr>
             </thead>
             <tbody>
-              <!-- <%
+              <%
               if (adminData.length!=0){
                 let i=1;
-              } -->
+                adminData.forEach((data) => {
+                %>
                 <tr class="clickable" onclick="window.location='/'">
                     <th scope="row">1</th>
-                    <td>Placehodler name</td>
-                    <td>Placeholder email</td>
-                    <td>Placehodler phone</td>
+                    <td><%=data.name %> </td>
+                    <td><%=data.email %> </td>
+                    <td><%=data.phone %></td>
                 </tr>
+                <%  i++; }) %>
+                <% } else{ %>
+                  <tr>
+                    <td>No Data Found</td>
+                  </tr>
+            <% } %>
             </tbody>
           </table>
     </div>
