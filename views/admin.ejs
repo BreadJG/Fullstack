@@ -52,7 +52,7 @@
                 let i=1;
                 adminData.forEach((data) => {
                 %>
-                <tr class="clickable" onclick="window.location='/'">
+                <tr class="clickable" onclick="window.location='/admin/<%=data.id %>'">
                     <th scope="row"><%=data.id %></th>
                     <td><%=data.name %> </td>
                     <td><%=data.email %> </td>
