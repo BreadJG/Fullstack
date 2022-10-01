@@ -54,7 +54,7 @@
                 let i=1;
                 customerData.forEach((data) => {
                 %>
-                <tr class="clickable" onclick="window.location='/customers/<%=data.id %>'">
+                <tr class="clickable" onclick="window.location='/customers/<%=data.firstName %><%=data.lastName %>'">
                     <th scope="row"><%=data.id %></th>
                     <td><%=data.firstName %> </td>
                     <td><%=data.lastName %> </td>
