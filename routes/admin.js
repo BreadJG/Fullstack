@@ -18,8 +18,10 @@ router.get('/:slug', function(req, res, next) {
     db.Admin.findAll()
     .then((admins) => {
         let {slug} = req.params;
-        let index = slug - 1;
-        res.render('../views/adminProfile', {adminData:admins[index]})
+        let admin = admins.find((admin) => {
+            return admin.dataValues.id === parseInt(slug);
+        })
+        res.render('../views/adminProfile', {adminData:admin})
     });
 });
 

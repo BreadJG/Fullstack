@@ -16,8 +16,10 @@ router.get('/:slug', function(req, res, next) {
     db.Customer.findAll()
     .then((customers) => {
         let {slug} = req.params;
-        let index = slug - 1;
-        res.render('../views/customerProfile', {customerData:customers[index]})
+        let customer = customers.find((customer) => {
+            return customer.dataValues.id === parseInt(slug);
+        })
+        res.render('../views/customerProfile', {customerData:customer})
     });
 });
 
