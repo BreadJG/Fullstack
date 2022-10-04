@@ -17,7 +17,8 @@ router.get('/:slug', function(req, res, next) {
     .then((customers) => {
         let {slug} = req.params;
         let customer = customers.find((customer) => {
-            return customer.dataValues.id === parseInt(slug);
+            // console.log(customer.dataValues.firstName + customer.dataValues.lastName)
+            return customer.dataValues.firstName + customer.dataValues.lastName === slug;
         })
         res.render('../views/customerProfile', {customerData:customer})
     });
