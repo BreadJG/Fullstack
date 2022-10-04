@@ -4,7 +4,6 @@ const app = express();
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
 
-
 const db = require('./models')
 
 //ROUTERS
@@ -18,8 +17,6 @@ app.use('/customers', customerRouter)
 app.get('/', (req, res)=>{
     res.render('home');
 });
-
-
 
 // app.get('/admin', (req, res)=>{
 //     res.render('admin', {db:db});
