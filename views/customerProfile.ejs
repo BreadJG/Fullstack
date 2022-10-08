@@ -47,29 +47,44 @@
             <p><strong>Phone:</strong> <%=customerData.phone%></p>
             <p><strong>State:</strong> <%=customerData.state%></p>
             <p><strong>City:</strong> <%=customerData.city%></p>
+            <p><strong>ID Number:</strong> <%=customerData.id%></p>
             </div>
         </div>
         <div class="justify-content-center col-9 p-0">
             <h1 class="text-center m-3"><%=customerData.firstName%>'s Interactions</h1>
             <table class="table m-3 table-hover">
-                <thead>
+              <caption>Customer Profiles</caption>
+              <thead>
+                  <tr>
+                      <th scope="col">Customer</th>
+                      <th scope="col">Admin Id</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Last Interaction</th>
+                      <th scope="col">Notes</th>
+                  </tr>
+              </thead>
+              <tbody class="overflow-auto">
+                <%
+                if (interactionData.length!=0){
+                  let i=1;
+                  interactionData.forEach((data) => {
+                  %>
+                  <tr>
+                      <th scope="row"><%=customerData.firstName %> <%= customerData.lastName %></th>
+                      <td><%=data.adminId%> </td>
+                      <td><%=data.type %> </td>
+                      <td><%=data.createdAt %> </td>
+                      <td><%=data.note %></td>
+                  </tr>
+                  <%  i++; }) %>
+                  <% } else{ %>
                     <tr>
-                        <th scope="col">Interaction ID</th>
-                        <th scope="col">Admin</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Notes</th>
+                      <td>No Data Found</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr class="">
-                        <th scope="row">Interaction#</th>
-                        <td>Admin Name</td>
-                        <td>Interaction Type</td>
-                        <td>longer text message</td>
-                    </tr>
-                </tbody>
-                
+              <% } %>  
+              </tbody>
             </table>
+                
             <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#addInteraction">
                 Add New Interaction
               </button>
@@ -84,28 +99,34 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form class="modal-body" action="" method="post" onsubmit="">
+                    <form class="modal-body" method="post" action="/customer/<%=customerData.firstName%><%=customerData.lastName%>">
                         <div class="form-group row">
+                          <input type="hidden" name="custId" value="<%=customerData.id%>">
                           <label for="staticFirstName" class="col-sm-3 col-form-label"><strong>First Name</strong></label>
                           <div class="col-sm-9">
                             <input type="text" readonly class="form-control-plaintext" name="staticFirstName" value="<%=customerData.firstName%>">
                           </div>
                           <label for="staticLastName" class="col-sm-3 col-form-label"><strong>Last Name</strong></label>
                           <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" name="staticFirstName" value="<%=customerData.lastName%>">
-                          </div>
-                          <label for="adminID" class="col-sm-3 col-form-label"><strong>Admin ID</strong></label>
-                          <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" name="adminID" value="this will be the logged in user ID">
+                            <input type="text" readonly class="form-control-plaintext" name="staticLastName" value="<%=customerData.lastName%>">
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label class="col-3" for="selectType"><strong>Admin ID</strong></label>
+                          <select class="custom-select col-sm-8" name="selectID" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </div>
+                        <div class="form-group row">
                           <label class="col-3" for="selectType"><strong>Type</strong></label>
-                          <select class="custom-select col-sm-8" name="selectType" require>
-                            <option selected>Choose...</option>
-                            <option value="1">Call</option>
-                            <option value="2">Email</option>
-                            <option value="3">Text</option>
+                          <select class="custom-select col-sm-8" name="selectType" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="Call">Call</option>
+                            <option value="Email">Email</option>
+                            <option value="Text">Text</option>
                           </select>
                         </div>
                         <div class="form-group row">
@@ -117,7 +138,7 @@
                   
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Add Interaction</button>
+                          <button type="submit" class="btn btn-primary" >Add Interaction</button>
                         </div>
                       </form>
                   </div>
@@ -129,6 +150,7 @@
     </div>
 
     <script src="/node.js"></script>
+    <script src="/routes/customer.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

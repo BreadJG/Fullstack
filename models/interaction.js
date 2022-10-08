@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Interaction',
-    timestamps: false
+    timestamps: true
   });
   return Interaction;
 };

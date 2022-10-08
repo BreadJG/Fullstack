@@ -6,9 +6,25 @@ const db = require('../models')
 
 
 router.get('/', function(req, res, next) {
-    db.Interaction.findAll()
-    .then((interactions) => {
-       res.render('../views/interaction', {interactionData:interactions})
+    Promise.all([db.Interaction.findAll(),
+        db.Admin.findAll(),
+        db.Customer.findAll(),
+    ])
+    .then((data) => {
+        const customers = [];
+        const admins =[];
+        data[2].forEach((customer) =>{
+            customers.push({
+                firstName: customer.firstName,
+                lastName: customer.lastName
+            })
+        })
+        data[1].forEach((admin) =>{
+            admins.push({
+                adminName: admin.name,
+            })
+        })
+       res.render('../views/interaction', {interactionData:data[0], customers, admins})
     });
 });
 
