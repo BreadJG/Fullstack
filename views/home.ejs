@@ -30,13 +30,68 @@
                     <a class="nav-link text-light" href="/interaction">Interactions</a>
                 </li>
               </ul>
-              <a class="nav-item nav-link text-light" href="#">Log in</a>
+    
+              <button type="button" class="btn btn-success m-3">
+               Log Out
+                </button>
+                             
             </div>
           </nav>
     </header>
-    <div>
-        <h1 class="text-center m-3">Welcome... Placeholder for Body</h1>
-    </div>
+    <section>
+      <!-- Jumbotron -->
+      <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+        <div class="container">
+          <div class="row gx-lg-5 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <h2 class="my-5 display-4 fw-bold ls-tight">
+                Organize your data, <br />
+                <span class="text-success">Grow your business</span>
+              </h2>
+              <p class="text-left" style="color: hsl(217, 10%, 50.8%)">
+                Sexy CRM helps businesses build a relationship with their customers that results in increased customer retention. Since customer loyalty and revenue are both qualities that affect a company's revenue, 
+                Sexy CRM is a management strategy that increases profits for a business. 
+              </p>
+            </div>
+    
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="card">
+                <div class="card-body py-5 px-md-5">
+                  <form method="post" action="/register">
+                    <h2 class="mb-4">Sign in</h2>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <input type="email" id="emailInput" class="form-control" />
+                      <label class="form-label" for="emailInput">Email address</label>
+                    </div>
+    
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                      <input type="password" id="passwordInput" class="form-control" />
+                      <label class="form-label" for="passwordInput">Password</label>
+                    </div>
+    
+                    <!-- Checkbox -->
+                    <div class="form-check d-flex mb-4">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="rememberMe" checked />
+                      <label class="form-check-label" for="rememberMe">
+                        Remember me
+                      </label>
+                    </div>
+    
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-success btn-block mb-4">
+                      Sign in
+                    </button>
+                  </form>
+                  <a href="/register">Don't have an account? Click here.</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </section>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
