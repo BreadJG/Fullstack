@@ -30,7 +30,10 @@
                     <a class="nav-link text-light" href="/interaction">Interactions</a>
                 </li>
               </ul>
-              <a class="nav-item nav-link text-light" href="#">Log in</a>
+              <% if (login === true){%>
+                <a class="nav-item nav-link text-light" href="/logout">Log out</a>
+                <%} else{%>
+                <a class="nav-item nav-link text-light" href="/">Sign in Below</a><%}%>
             </div>
           </nav>
     </header>
@@ -51,20 +54,25 @@
             </div>
     
             <div class="col-lg-6 mb-5 mb-lg-0">
+              <%if (login === true){%>
+                <h2>Welcome you <%=user.name%></h2>
+                <h3>Log in Successful</h3>
+                <%} else{%>
               <div class="card">
+                <h3 id="signInResult"></h3>
                 <div class="card-body py-5 px-md-5">
-                  <form>
+                  <form action="/" method="post">
                     <h2 class="mb-4">Sign in</h2>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                      <input type="email" id="emailInput" class="form-control" />
-                      <label class="form-label" for="emailInput">Email address</label>
+                      <input type="email" name="emailInput" class="form-control" />
+                      <label class="form-label" for="email">Email address</label>
                     </div>
     
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <input type="password" id="passwordInput" class="form-control" />
-                      <label class="form-label" for="passwordInput">Password</label>
+                      <input type="password" name="passwordInput" class="form-control" />
+                      <label class="form-label" for="password">Password</label>
                     </div>
     
                     <!-- Checkbox -->
@@ -77,10 +85,10 @@
     
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-success btn-block mb-4">
-                      Sign up
+                      Sign in
                     </button>
                   </form>
-                  <a href="">Don't have an account? Click here.</a>
+                  <a href="/register">Don't have an account? Click here.</a><%}%>
                 </div>
               </div>
             </div>

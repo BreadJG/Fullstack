@@ -24,7 +24,6 @@ router.get('/', function(req, res, next) {
                 adminName: data[0].find((x) => x.id === interaction.adminId)?.name,
             })
         })
-        console.log(customerInteractions);
         res.render('../views/interaction', {adminData:data[0], customerInteractions})
     });
 });

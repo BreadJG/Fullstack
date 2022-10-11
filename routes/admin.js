@@ -33,7 +33,6 @@ router.get('/:slug', function(req, res, next) {
                 lastName: data[2].find((x) => x.id === interaction.customerId)?.lastName
             })
         })
-        console.log(customerInteractions);
         res.render('../views/adminProfile', {adminData:data[0], customerInteractions})
     });
 });
